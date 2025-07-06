@@ -7,40 +7,59 @@ import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
 public class KafkaConfig {
-    public static final String APPLICATION_TOPIC = "application-events";
-    public static final String COMMISSION_TOPIC = "commission-events";
-    public static final String EXPERTISE_TOPIC = "expertise-events";
-    public static final String PORTAL_TOPIC = "portal-events";
-
     @Bean
-    public NewTopic applicationTopic() {
-        return TopicBuilder.name(APPLICATION_TOPIC)
+    public NewTopic przToTotmixTopic() {
+        return TopicBuilder.name("prz_to_totmix")
                 .partitions(3)
-                .replicas(1)
+                .replicas(2)
                 .build();
     }
 
     @Bean
-    public NewTopic commissionTopic() {
-        return TopicBuilder.name(COMMISSION_TOPIC)
+    public NewTopic seToTotmixTopic() {
+        return TopicBuilder.name("se_to_totmix")
                 .partitions(3)
-                .replicas(1)
+                .replicas(2)
                 .build();
     }
 
     @Bean
-    public NewTopic expertiseTopic() {
-        return TopicBuilder.name(EXPERTISE_TOPIC)
+    public NewTopic totmixToMkTopic() {
+        return TopicBuilder.name("totmix_to_mk")
                 .partitions(3)
-                .replicas(1)
+                .replicas(2)
                 .build();
     }
 
     @Bean
-    public NewTopic portalTopic() {
-        return TopicBuilder.name(PORTAL_TOPIC)
+    public NewTopic mkToTotmixTopic() {
+        return TopicBuilder.name("mk_to_totmix")
                 .partitions(3)
-                .replicas(1)
+                .replicas(2)
+                .build();
+    }
+
+    @Bean
+    public NewTopic totmixToMeTopic() {
+        return TopicBuilder.name("totmix_to_me")
+                .partitions(3)
+                .replicas(2)
+                .build();
+    }
+
+    @Bean
+    public NewTopic meToTotmixTopic() {
+        return TopicBuilder.name("me_to_totmix")
+                .partitions(3)
+                .replicas(2)
+                .build();
+    }
+
+    @Bean
+    public NewTopic totmixToSeTopic() {
+        return TopicBuilder.name("totmix_to_se")
+                .partitions(3)
+                .replicas(2)
                 .build();
     }
 }

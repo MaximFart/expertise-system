@@ -19,7 +19,7 @@ public class ApplicationConsumer {
     private final ApplicationService applicationService;
     private final ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "system.applications.incoming")
+    @KafkaListener(topics = "Outbox-event")
     @Transactional
     public void processIncomingApplication(String message) {
         try {
