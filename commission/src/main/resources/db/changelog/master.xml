@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.19.xsd">
+
+    <!-- Подключаем все изменения по порядку -->
+    <include file="db/changelog/v1.0/initial_schema.sql" relativeToChangelogFile="true"/>
+    <include file="db/changelog/v1.0/seed_data.sql" relativeToChangelogFile="true"/>
+
+    <!-- Для будущих миграций -->
+    <!-- <include file="db/changelog/v1.1/alter_tables.sql" relativeToChangelogFile="true"/> -->
+</databaseChangeLog>

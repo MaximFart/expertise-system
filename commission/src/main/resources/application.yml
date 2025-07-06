@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/commission_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: "commission-group"
+      auto-offset-reset: earliest
+    producer:
+      client-id: "commission-producer"
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    enabled: true
+    default-schema: public
+
+# commission/src/main/resources/application.yml
+# Они захардкожены
+kafka:
+  topics:
+    commission: "commission-events"    # Входящие заявки
+    application: "application-events"  # Исходящие ответы
+
+server:
+  port: 8081

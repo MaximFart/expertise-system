@@ -1,0 +1,38 @@
+# Общие настройки для всех модулей
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate # Запрещаем автоматическое создание таблиц
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/expertise_system
+    username: postgres
+    password: postgres
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+
+# Настройки Outbox Pattern
+outbox:
+  scheduler:
+    fixed-delay: 120000 # 2 минуты между проверками (в ms)
+    batch-size: 100     # Максимальное количество событий за раз
+
+# Логирование
+logging:
+  level:
+    org.springframework.kafka: INFO
+    com.expertise: DEBUG
